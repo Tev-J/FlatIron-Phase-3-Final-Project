@@ -19,9 +19,9 @@ Stretch goals for project:
 - Use of many-to-many relationships with SQLAlchemy ORM.
 - Use of additional data structures, such as ranges and tuples.
 
-## Project Proposals
+# Project Proposals
 
-# Idea 1
+## Idea 1
 
 #### Main idea:
 
@@ -92,3 +92,72 @@ A smoothie recipe app, "SmoothiePy", that allows users to add and view smoothie 
 #### What area I think will be most challenging:
 
 - determining how to make each recipe unique. Can two recipes with all but one similar attribute, like the quantity of an ingredient, be easily determined unique? How do I write its validity test?
+
+## Idea 2
+
+#### Main idea:
+
+"Lets Learn Networking CLI"
+A CLI app designed store, save, and access study flashcards, categorizing and retrieving them based on distinct subject names.
+
+#### User Story
+
+- Users will be able to create flashcards with networking questions, categorized by subject
+- Users can view and save other flash cards by subject
+
+#### Concepts I will use to meet project requirements:
+
+- Object Oriented Python
+
+  - Class for User, Flashcards with attributes
+
+- Database Tables
+
+  - user
+    - id
+    - user_name
+    - email_address
+  - flashcard
+    - id
+    - question
+    - answer
+    - subject
+  - user_flashcard
+    - id
+    - user_id
+    - flashcard_id
+  - subject
+    - id
+    - subject_name
+  - flashcard_subject
+    - flashcard_id
+    - subject_id
+
+- Object Relationships
+
+  - Users can have many flashcards, flashcards can be used by many users. // many to many
+  - Flashcard can contain than one subjects. Subject likely have more than one flashcard // many to many
+
+- Aggregate and Association Methods | CRUD
+  - Create
+    - create flashcard
+  - Read
+    - read a question
+    - read an answer
+    - read all flashcards by a user
+    - read all flashcards by a subject
+  - Update
+    - display flashcard as studied/known/checked-off?
+  - Delete
+    - user should be able to delete own flashcard
+- Data Structures
+  - List:
+    - list of flashcards for user by id
+  - Dict:
+    - flashcard has a set of attribute and values // question, answer, subject
+  - Tuple
+    - subjects for flashcards
+
+#### What area I think will be most challenging:
+
+- How can users delete their own flashcards while other users are allowed to read/interact with it?
