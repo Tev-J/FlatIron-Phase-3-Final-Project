@@ -23,7 +23,7 @@ Stretch goals for project:
 
 ## Idea 1
 
-#### Main idea:
+### Main idea:
 
 A smoothie recipe app, "SmoothiePy", that allows users to add and view smoothie recipes.
 
@@ -92,6 +92,40 @@ A smoothie recipe app, "SmoothiePy", that allows users to add and view smoothie 
 #### What area I think will be most challenging:
 
 - determining how to make each recipe unique. Can two recipes with all but one similar attribute, like the quantity of an ingredient, be easily determined unique? How do I write its validity test?
+
+### Database Design
+
+### Tables
+
+#### user
+
+- id: INTEGER NOT NULL PRIMARY KEY AUTO INCREMENT
+- username: STRING NOT NULL UNIQUE
+- password: STRING NOT NULL
+- email: STRING NOT NULL UNIQUE
+
+#### recipe
+
+- id: INTEGER NOT NULL PRIMARY KEY AUTO INCREMENT
+- name: STRING NOT NULL
+
+#### ingredient
+
+- id: INTEGER NOT NULL PRIMARY KEY AUTO INCREMENT
+- name: STRING NOT NULL UNIQUE
+
+#### user recipes (join table)
+
+- id: INTEGER NOT NULL PRIMARY KEY AUTO INCREMENT
+- user ID: INTEGER NOT NULL
+- recipe ID: INTEGER NOT NULL
+
+#### recipe ingredients (join table)
+
+- id: INTEGER NOT NULL PRIMARY KEY AUTO INCREMENT
+- recipe id: INTEGER NOT NULL
+- ingredient id: INTEGER NOT NULL
+- ingredient quantity: INTEGER NOT NULL
 
 ## Idea 2
 
