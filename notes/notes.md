@@ -195,3 +195,37 @@ A CLI app designed store, save, and access study flashcards, categorizing and re
 #### What area I think will be most challenging:
 
 - How can users delete their own flashcards while other users are allowed to read/interact with it?
+
+### Database Design
+
+### Tables
+
+#### user
+
+- id: INTEGER NOT NULL PRIMARY KEY AUTO INCREMENT
+- username: STRING NOT NULL UNIQUE
+- password: STRING NOT NULL
+- email: STRING NOT NULL UNIQUE
+
+#### flashcard
+
+- id: INTEGER NOT NULL PRIMARY KEY AUTO INCREMENT
+- subject name: STRING NOT NULL UNIQUE
+- question: STRING NOT NULL
+- answer: STRING NOT NULL
+
+#### user_flashcard (join table)
+
+- user ID: INTEGER NOT NULL
+- flashcard ID: INTEGER NOT NULL
+- learned/known/pass: INTEGER NOT NULL
+
+#### subject
+
+- id: INTEGER NOT NULL PRIMARY KEY AUTO INCREMENT
+- subject name: INTEGER NOT NULL
+
+#### flashcard_subject (join table)
+
+- subject ID: INTEGER NOT NULL
+- flahcard ID: INTEGER NOT NULL
