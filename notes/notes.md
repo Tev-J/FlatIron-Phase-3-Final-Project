@@ -229,3 +229,32 @@ A CLI app designed store, save, and access study flashcards, categorizing and re
 
 - subject ID: INTEGER NOT NULL
 - flahcard ID: INTEGER NOT NULL
+
+## Generating Pipenv
+
+### Installing Dependencies
+
+###### First install Pipenv then run the following commands
+
+#### [Install Pipenv](https://github.com/pypa/pipenv/blob/main/README.md#installation)
+
+#### `pipenv install ipdb sqlalchemy==1.4.41 alembic faker requests`
+
+#### `pipenv alembic init migrations` // some files will be created in dir
+
+#### Create model.py in main directory //
+
+#### In migrations/env.py, set create the following condition:
+
+`from models import Base` \n
+`target_metadata = Base.metadata`
+
+#### and add `render_as_batch=True` to config
+
+`
+    with connectable.connect() as connection:
+        context.configure(
+            connection=connection, target_metadata=target_metadata, render_as_batch=True
+        )`
+
+#### In alembic.ini, set `sqlalchemy.url = sqlite:///data.db `
