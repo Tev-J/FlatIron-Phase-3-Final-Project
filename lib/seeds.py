@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from models import Session, User, Flashcard, Category, Base, engine
+from models import Session, User, Flashcard, Category, Base, engine, Quiz
 from faker import Faker
 from more_data import questions_and_answers, networking_fundamentals_topics
 import ipdb
@@ -40,6 +40,7 @@ for item in questions_and_answers:
 session.bulk_save_objects(flashcards)
 
 
+# testing categories
 categories = []
 for topic in networking_fundamentals_topics:
     category_inst = Category(name=topic)
@@ -47,6 +48,16 @@ for topic in networking_fundamentals_topics:
 
 session.bulk_save_objects(categories)
 
+# testing quiz
+quiz = [
+    Quiz(title=fake.job()),
+    Quiz(title=fake.job()),
+    Quiz(title=fake.job()),
+    Quiz(title=fake.job()),
+    Quiz(title=fake.job()),
+]
+# ipdb.set_trace()
+session.bulk_save_objects(quiz)
 
 session.commit()
 session.close()
