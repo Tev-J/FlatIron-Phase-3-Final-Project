@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from .models import Session, User
+from models import Session, User
 from faker import Faker
 fake = Faker()
 

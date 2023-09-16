@@ -18,4 +18,3 @@ class User(Base):
         )
 
 
-print("look, no change")
