@@ -1,15 +1,20 @@
-from .session import Session
+#!/usr/bin/env python3
+
+from .models import Session, User
 from faker import Faker
 fake = Faker()
-from .user import User
+
 
 session = Session()
 
 users = [
-    User(username=fake.user_name(), email=fake.ascii_safe_email(), password=fake.uuid4()),
-    User(username=fake.user_name(), email=fake.ascii_safe_email(), password=fake.uuid4()),
-    User(username=fake.user_name(), email=fake.ascii_safe_email(), password=fake.uuid4()),
-    User(username=fake.user_name(), email=fake.ascii_safe_email(), password=fake.uuid4()),
+    User(username=fake.user_name(), password=fake.uuid4()),
+    User(username=fake.user_name(), password=fake.uuid4()),
+    User(username=fake.user_name(), password=fake.uuid4()),
+    User(username=fake.user_name(), password=fake.uuid4()),
     
 ]
 session.bulk_save_objects(users)
+
+print(users)
+import ipdb; ipdb.set_trace()
