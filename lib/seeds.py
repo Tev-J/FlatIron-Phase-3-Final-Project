@@ -45,7 +45,7 @@ for topic in networking_fundamentals_topics:
     category_inst = Category(name=topic)
     categories.append(category_inst)
 
-ipdb.set_trace()
+session.bulk_save_objects(categories)
 
 
 session.commit()
