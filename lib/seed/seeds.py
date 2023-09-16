@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from models import Session, User
+from ..models import Session, User
 from faker import Faker
 fake = Faker()
 
@@ -18,3 +18,4 @@ session.bulk_save_objects(users)
 
 print(users)
 import ipdb; ipdb.set_trace()
+
