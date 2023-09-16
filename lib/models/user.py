@@ -14,7 +14,5 @@ class User(Base):
             f"\n<User "
             + f"\nid = {self.id}, "
             + f"\nusername = {self.username}, "
-            + " >"
+            + " >\n"
         )
-
-

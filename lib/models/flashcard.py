@@ -13,9 +13,9 @@ class Flashcard(Base):
 
     def __repr__(self):
         return (
-            f"question = {self.question}"
-            + f"answer = {self.answer}"
+            f"\nquestion = {self.question}"
+            + f"\nanswer = {self.answer}"
             + f"\ncreated_at = {self.created_at}, "
             + f"\nupdated_at = {self.updated_at}, "
-            + " >"
+            + " >\n"
         )
