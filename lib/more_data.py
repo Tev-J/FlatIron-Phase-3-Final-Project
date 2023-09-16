@@ -50,3 +50,17 @@ questions_and_answers = [
         "answer": "In a star topology, the central hub is responsible for managing data traffic. It acts as a conduit to transmit messages between devices connected to it, and often performs tasks such as data filtering to facilitate efficient communication.",
     },
 ]
+
+
+networking_fundamentals_topics = [
+    "Network Topologies and Architectures",
+    "Networking Devices and Hardware",
+    "Networking Protocols and Standards",
+    "IP Addressing and Subnetting",
+    "OSI Model",
+    "Network Security",
+    "Wireless Networking",
+    "Network Management and Monitoring",
+    "Cloud Networking",
+    "Troubleshooting and Maintenance",
+]
