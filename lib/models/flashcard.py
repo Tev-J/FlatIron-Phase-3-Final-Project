@@ -3,7 +3,7 @@ from sqlalchemy import Column, Integer, String, DateTime, func
 
 
 class Flashcard(Base):
-    __tablename__ = "Flashcard"
+    __tablename__ = "flashcard"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     question = Column(String, nullable=False, unique=True)
