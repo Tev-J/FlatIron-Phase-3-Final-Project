@@ -1,5 +1,6 @@
 from .base import Base
-from sqlalchemy import Column, Integer, String, DateTime, func
+from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, func
+from sqlalchemy.orm import relationship
 
 
 class Flashcard(Base):
@@ -10,6 +11,10 @@ class Flashcard(Base):
     answer = Column(String, nullable=False)
     created_at = Column(DateTime, server_default=func.now())
     updated_at = Column(DateTime, onupdate=func.now())
+    user_id = Column(
+        Integer, ForeignKey("user.id"), name="flashcard_user", nullable=False
+    )
+    user = relationship("User", backref="flashcards")
 
     def __repr__(self):
         return (

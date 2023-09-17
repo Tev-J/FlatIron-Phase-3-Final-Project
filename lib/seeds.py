@@ -3,7 +3,8 @@
 from models import Session, User, Flashcard, Category, Base, engine, Quiz
 from faker import Faker
 from more_data import questions_and_answers, networking_fundamentals_topics
-import ipdb
+import ipdb, random
+
 
 fake = Faker()
 
@@ -39,6 +40,12 @@ for item in questions_and_answers:
 
 session.bulk_save_objects(flashcards)
 
+# testing user-flashcard relationship
+for user in users:
+    flashcard_count = random.randint(1, len(questions_and_answers))
+    flashcard_library = random.sample(questions_and_answers, flashcard_count)
+
+ipdb.set_trace()
 
 # testing categories
 categories = []
