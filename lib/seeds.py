@@ -59,8 +59,11 @@ for user in users:
     flashcard_library = random.sample(questions_and_answers, flashcard_count)
     # print(f"\nThese are the cards for {user.username}:")
     for card in flashcard_library:
+        ipdb.set_trace()
         new_flashcard = Flashcard(question=card["question"], answer=card["answer"])
         user.flashcards.append(new_flashcard)
+
+        # new_category = Category()
 
         session.add(new_flashcard)
 
