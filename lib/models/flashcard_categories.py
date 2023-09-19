@@ -1,6 +1,6 @@
 from .base import Base
 from sqlalchemy import create_engine, Column, Integer, ForeignKey, Table
-from sqlalchemy.orm import relationship
+
 
 flashcard_categories = Table(
     "flashcard_categories",
