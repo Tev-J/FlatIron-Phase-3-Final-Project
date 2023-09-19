@@ -1,4 +1,5 @@
 from .base import Base
+from .flashcard_categories import flashcard_categories
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, func
 from sqlalchemy.orm import relationship
 
@@ -15,7 +16,9 @@ class Flashcard(Base):
         Integer, ForeignKey("user.id"), name="flashcard_user", nullable=False
     )
     user = relationship("User", backref="flashcards")
-    categories = relationship("Category", backref="flashcards")
+    categories = relationship(
+        "Category", secondary=flashcard_categories, backref="flashcards"
+    )
 
     def __repr__(self):
         return (
