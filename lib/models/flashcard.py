@@ -15,6 +15,7 @@ class Flashcard(Base):
         Integer, ForeignKey("user.id"), name="flashcard_user", nullable=False
     )
     user = relationship("User", backref="flashcards")
+    categories = relationship("Category", backref="flashcards")
 
     def __repr__(self):
         return (
