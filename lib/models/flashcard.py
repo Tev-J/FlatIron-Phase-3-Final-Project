@@ -7,7 +7,7 @@ class Flashcard(Base):
     __tablename__ = "flashcard"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    question = Column(String, nullable=False, unique=True)
+    question = Column(String, nullable=False)
     answer = Column(String, nullable=False)
     created_at = Column(DateTime, server_default=func.now())
     updated_at = Column(DateTime, onupdate=func.now())
