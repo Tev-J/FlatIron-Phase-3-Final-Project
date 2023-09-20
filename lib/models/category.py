@@ -9,4 +9,4 @@ class Category(Base):
     name = Column(String)
 
     def __repr__(self):
-        return f"\nname = {self.name}" + " >\n"
+        return f"\nname = {self.name}" + f"\nid={self.id}" + "\n"

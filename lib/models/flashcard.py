@@ -26,5 +26,5 @@ class Flashcard(Base):
             + f"\nanswer = {self.answer}"
             + f"\ncreated_at = {self.created_at}, "
             + f"\nupdated_at = {self.updated_at}, "
-            + " >\n"
+            + "\n"
         )
