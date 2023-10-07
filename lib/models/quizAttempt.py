@@ -4,7 +4,7 @@ from sqlalchemy.orm import relationship
 
 
 class QuizAttempt(Base):
-    __tablename__ = "quiz_attempts"
+    __tablename__ = "quiz_attempt"
 
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey("user.id"))
