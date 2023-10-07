@@ -30,7 +30,7 @@ session.query(flashcard_categories).delete()
 session.query(Quiz).delete()
 session.query(QuizAttempt).delete()
 session.query(UserResponse).delete()
-
+session.query(quiz_flashcard).delete()
 # generating user data
 users = [
     User(username=fake.user_name(), password=fake.uuid4()),
@@ -71,26 +71,48 @@ for user in users:
         # ipdb.set_trace()
         session.add(new_flashcard)
 
-flashcards = session.query(Flashcard).all()
+    # testing quizzes
+    user_flashcards = session.query(Flashcard).filter_by(user_id=user.id).all()
+    quizzes_all = session.query(Quiz).all()
 
-# ipdb.set_trace()
-quizzes = session.query(Quiz).all()
+    for _ in range(3):
+        quiz_name = fake.company()
+        flashcard_library = random.sample(user_flashcards, 3)
 
-for _ in range(3):
-    quiz_name = Quiz(title=f"{fake.company()}")
-    flashcard_library = random.sample(flashcards, 5)
+        newQuiz = Quiz(title=quiz_name, user_id=user.id)
+        for card in flashcard_library:
+            newQuiz.flashcards.append(card)
 
-    newQuiz = Quiz(title=quiz_name)
-    for cards in flashcard_library:
-        newQuiz.flashcards.append(card)
+        user.quizzes.append(newQuiz)
 
-    ipdb.set_trace()
-# for flashcard in session.query(Flashcard).limit(5).all():
-#     quiz.flashcards.append(flashcard)
-# session.add(quiz)
-# session.commit()
+    # testing quiz attenpt
+    user_quizzes = session.query(Quiz).filter_by(user_id=user.id).all()
+    test_quiz = random.sample(user_quizzes, 1)
 
+    for qZ in test_quiz:
+        score = 0
+        quiz_attempt = QuizAttempt(user_id=user.id, quiz_id=qZ.id)
+        # ipdb.set_trace()
 
+        for card in qZ.flashcards:
+            available_answers = [
+                f.answer
+                for f in session.query(Flashcard).order_by(func.random()).limit(4).all()
+            ]
+
+            selected_answer = random.choice(available_answers)
+
+            if selected_answer == card.answer:
+                score += 1
+
+            user_response = UserResponse(
+                flashcard_id=card.id,
+                selected_answer=selected_answer,
+                is_correct=selected_answer == card.answer,
+                quiz_attempt=quiz_attempt,
+            )
+        session.add(user_response)
+    session.add(quiz_attempt)
 # quiz_attempt = QuizAttempt(user_id=users[0].id, quiz_id=quiz.id)
 
 # for flashcard in quiz.flashcards:

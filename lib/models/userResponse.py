@@ -10,3 +10,12 @@ class UserResponse(Base):
     selected_answer = Column(String)
     is_correct = Column(Boolean)
     quiz_attempt_id = Column(Integer, ForeignKey("quiz_attempts.id"))
+
+    def __repr__(self):
+        return (
+            f"\nflashcard_id = {self.flashcard_id}"
+            + f"\nselected_answer = {self.selected_answer} "
+            + f"\Correct? = {self.is_correct} "
+            + f"Quiz Attempted ID = {self.quiz_attempt_id} "
+            + " >\n"
+        )
