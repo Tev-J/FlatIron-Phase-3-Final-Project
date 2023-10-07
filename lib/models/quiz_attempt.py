@@ -14,7 +14,6 @@ class QuizAttempt(Base):
     score = Column(Integer)
 
     responses = relationship("UserResponse", backref="quiz_attempt")
-    quizzes = relationship("Quiz", secondary="quiz_flashcard", backref="flashcards")
 
     def __repr__(self):
         return (

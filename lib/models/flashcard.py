@@ -19,6 +19,7 @@ class Flashcard(Base):
     categories = relationship(
         "Category", secondary=flashcard_categories, backref="flashcards"
     )
+    quizzes = relationship("Quiz", secondary="quiz_flashcard", backref="flashcards")
 
     def __repr__(self):
         return (
