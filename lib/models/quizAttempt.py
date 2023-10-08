@@ -1,5 +1,5 @@
 from .base import Base
-from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, func
+from sqlalchemy import Column, Integer, Float, DateTime, ForeignKey, func
 from sqlalchemy.orm import relationship
 
 
@@ -11,9 +11,17 @@ class QuizAttempt(Base):
     quiz_id = Column(Integer, ForeignKey("quiz.id"))
     start_time = Column(DateTime, default=func.now())
     end_time = Column(DateTime)
-    score = Column(Integer)
+    score = Column(Float, default=0.0)
 
-    responses = relationship("UserResponse", backref="quiz_attempt")
+    responses = relationship("QuizResponse", backref="quiz_attempt")
+
+    def calculate_score(self):
+        correct_responses = [
+            response for response in self.responses if response.is_correct
+        ]
+        if self.responses:
+            return len(correct_responses) / len(self.responses)
+        return 0
 
     def __repr__(self):
         return (
@@ -21,5 +29,6 @@ class QuizAttempt(Base):
             + f"\nquiz_id = {self.quiz_id}"
             + f"\nstart_time = {self.start_time}, "
             + f"\nend_time = {self.end_time}, "
+            + f"\# of correct answers = {self.score}, "
             + "\n"
         )

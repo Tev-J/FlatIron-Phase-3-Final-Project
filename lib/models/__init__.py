@@ -6,5 +6,5 @@ from .category import Category
 from .quiz import Quiz
 from .flashcard_categories import flashcard_categories
 from .quizAttempt import QuizAttempt
-from .quizResponse import UserResponse
+from .quizResponse import QuizResponse
 from .quiz_flashcard import quiz_flashcard

@@ -2,8 +2,8 @@ from .base import Base
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 
 
-class UserResponse(Base):
-    __tablename__ = "user_responses"
+class QuizResponse(Base):
+    __tablename__ = "quizResponse"
 
     id = Column(Integer, primary_key=True)
     flashcard_id = Column(Integer, ForeignKey("flashcard.id"))
